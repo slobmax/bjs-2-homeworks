@@ -6,9 +6,9 @@ function solveEquation(a, b, c) {
   // код для задачи №1 писать здесь
   
   let d = b**2-4*a*c;
-  if (d < 0) {
-    arr = [];
-  } else if (d === 0) {
+  
+  arr = [];
+  if (d === 0) {
     arr = [(-b/(2*a))];
   } else if (d > 0) {
     arr = [((-b + Math.sqrt(d) )/(2*a)), (-b - Math.sqrt(d) )/(2*a)];
@@ -21,15 +21,15 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
   // код для задачи №2 писать здесь
 
-  if (isNaN(percent) === true) {
+  if (isNaN(percent)) {
     return (`Параметр "Процентная ставка" содержит неправильное значение "${percent}"`);
   }
 
-  if (isNaN(contribution) === true) {
+  if (isNaN(contribution)) {
       return (`Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`);
   } 
 
-  if (isNaN(amount) === true) {
+  if (isNaN(amount)) {
       return (`Параметр "Общая стоимость" содержит неправильное значение "${amount}"`);
   } 
 
