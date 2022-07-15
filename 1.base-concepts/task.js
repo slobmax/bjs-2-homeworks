@@ -19,5 +19,28 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
   // код для задачи №2 писать здесь
 
-  return totalAmount;
+  if (isNaN(percent) === true) {
+    return (`Параметр "Процентная ставка" содержит неправильное значение "${percent}"`);
+  }
+
+  if (isNaN(contribution) === true) {
+      return (`Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`);
+  } 
+
+  if (isNaN(amount) === true) {
+      return (`Параметр "Общая стоимость" содержит неправильное значение "${amount}"`);
+  } 
+
+  let startPeriod = new Date();
+  let endPeriod = new Date(date);
+  let oneMounth = (1000 * 60 * 60 * 24 * 365) / 12;
+  let diffInTime = endPeriod.getTime() - startPeriod.getTime();
+  let periodMounth = Math.round(diffInTime / oneMounth);  
+  let credit = amount - contribution;
+  let percentMounth = percent / 100 / 12;  
+  let pay = credit * (percentMounth + (percentMounth / (((1 + percentMounth) ** periodMounth) - 1)));
+      
+  totalAmount = pay * periodMounth;  
+  
+  return Number(totalAmount.toFixed(2));
 }
