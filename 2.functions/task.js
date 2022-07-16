@@ -55,4 +55,21 @@ function makeWork(arrOfArr, func) {
 // Задание 3
 function worker2(arr) {
   // Ваш код
+
+  let min, max, dif;
+
+  min = Infinity;
+  max = -Infinity;  
+
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];      
+    } if (arr[i] < min) {
+      min = arr[i];      
+    }          
+  }  
+  
+  dif = max - min;
+
+  return Math.abs(dif);
 }
