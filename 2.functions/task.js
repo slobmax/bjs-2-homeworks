@@ -26,18 +26,28 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
+  let sum = 0;
 
   // Ваш код
 
+  for (i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];  
+  }
+  
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
-  let max;
-
-  // Ваш кода
+  let max = -Infinity;
+  
+  // Ваш код
   // for ...
+
+  for (j = 0; j < arrOfArr.length; j++) {
+    if (func(arrOfArr[j]) > max) {
+      max = func(arrOfArr[j]);
+    }       
+  }
   
   return max;
 }
