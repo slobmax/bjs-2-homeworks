@@ -4,7 +4,24 @@ function getArrayParams(arr) {
 
   // Ваш код
 
-  return { min: min, max: max, avg: avg };
+  min = Infinity;
+  max = -Infinity;
+  sum = 0;
+
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];      
+    } if (arr[i] < min) {
+      min = arr[i];      
+    } 
+    sum = sum + arr[i];      
+  } 
+  
+  let avgTotal = sum/arr.length;
+
+  avg = Number(avgTotal.toFixed(2));
+  
+  return {min:min, max:max, avg:avg};
 }
 
 // Задание 2
