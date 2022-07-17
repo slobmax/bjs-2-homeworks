@@ -4,16 +4,17 @@ function getArrayParams(arr) {
 
   // Ваш код
 
-  min = Infinity;
-  max = -Infinity;
+  min = arr[0];
+  max = arr[0];
   sum = 0;
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
       max = arr[i];      
-    } if (arr[i] < min) {
+    } else if (arr[i] < min) {
       min = arr[i];      
-    } 
+    }
+
     sum = sum + arr[i];      
   } 
   
@@ -30,7 +31,7 @@ function worker(arr) {
 
   // Ваш код
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     sum = sum + arr[i];  
   }
   
@@ -43,9 +44,10 @@ function makeWork(arrOfArr, func) {
   // Ваш код
   // for ...
 
-  for (j = 0; j < arrOfArr.length; j++) {
-    if (func(arrOfArr[j]) > max) {
-      max = func(arrOfArr[j]);
+  for (let i = 0; i < arrOfArr.length; i++) {
+    const funcResult = func(arrOfArr[i]);
+    if (funcResult > max) {
+      max = funcResult;
     }       
   }
   
@@ -56,20 +58,18 @@ function makeWork(arrOfArr, func) {
 function worker2(arr) {
   // Ваш код
 
-  let min, max, dif;
+  let min, max;
 
-  min = Infinity;
-  max = -Infinity;  
+  min = arr[0];
+  max = arr[0];  
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
       max = arr[i];      
-    } if (arr[i] < min) {
+    } else if (arr[i] < min) {
       min = arr[i];      
     }          
   }  
   
-  dif = max - min;
-
-  return Math.abs(dif);
+  return Math.abs(max - min);
 }
