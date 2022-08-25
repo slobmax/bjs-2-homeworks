@@ -8,19 +8,18 @@ class AlarmClock {
     if(!id) {      
       throw new Error('ID не найден');      
     } if (this.alarmCollection.some(alarm => alarm.id === id)) {
-        console.error('ID уже существует');
-        return undefined;
+        console.error('ID уже существует');        
     } else {      
-        return this.alarmCollection.push({time, callback, id});
+        this.alarmCollection.push({time, callback, id});
     }    
   }  
 
-  removeClock(id) {
-    let removeAlarm = this.alarmCollection.findIndex(item => item.id === id);
-    if (removeAlarm === -1) {
-      return null;
+  removeClock(id) {    
+    if (this.alarmCollection.findIndex(alarm => alarm.id === id) === -1) {
+      return false;
     } else {
-      return this.alarmCollection.splice([removeAlarm], 1)[0];
+      this.alarmCollection.splice(id - 1, 1);      
+      return true;
     }
   }
 
@@ -41,7 +40,7 @@ class AlarmClock {
   }  
 
   stop() {
-    if(this.timerId != null && this.timerId != undefined) {      
+    if(this.timerId) {      
       clearInterval(this.timerId);
       this.timerId = null;
     }
@@ -60,9 +59,9 @@ class AlarmClock {
 
 function testCase() {
   let phoneAlarm = new AlarmClock();
-  phoneAlarm.addClock('02:49', () => console.log('Пора вставать!'), 1);
-  phoneAlarm.addClock('02:50', () => {console.log('Давай вставай уже!'); phoneAlarm.removeClock(2)}, 2);
-  phoneAlarm.addClock('02:51', () => {console.log('Вставай, а то проспишь!'); phoneAlarm.stop(), phoneAlarm.clearAlarms(), phoneAlarm.printAlarms()}, 3);
+  phoneAlarm.addClock('17:31', () => console.log('Пора вставать!'), 1);
+  phoneAlarm.addClock('17:32', () => {console.log('Давай вставай уже!'); phoneAlarm.removeClock(2)}, 2);
+  phoneAlarm.addClock('17:33', () => {console.log('Вставай, а то проспишь!'); phoneAlarm.stop(), phoneAlarm.clearAlarms(), phoneAlarm.printAlarms()}, 3);
   phoneAlarm.printAlarms();
   phoneAlarm.start();
 }
